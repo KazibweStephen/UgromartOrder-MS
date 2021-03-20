@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class OrderSericeImpl implements OrderService {
@@ -18,7 +18,7 @@ public class OrderSericeImpl implements OrderService {
     }
 
     @Override
-    public Order findOrderById(long id) {
+    public Order findOrderById(UUID id) {
         return orderRespository.findById(id).get();
     }
 
@@ -33,7 +33,9 @@ public class OrderSericeImpl implements OrderService {
     }
 
     @Override
-    public void updateOrderStatus(long id, String status) {
+    public void updateOrderStatus(UUID id, String status) {
        orderRespository.updateOrderStatus(id,status);
     }
+    @Override
+    public void updateOrderStatusAndPaymentId(UUID id , String status, UUID paymentReferenceId){orderRespository.updateOrderStatusAndPaymentId(id, status, paymentReferenceId);};
 }

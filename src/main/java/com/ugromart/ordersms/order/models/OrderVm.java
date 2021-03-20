@@ -2,22 +2,25 @@ package com.ugromart.ordersms.order.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.UUID;
 
 public class OrderVm {
 
-    private long orderId;
+    private String orderId;
     private long userId;
     private String orderDate;
     private Money totalOrder;
     private  String status;
+    private String customerPhoneNumber;
+    private String customerEmail;
+    private String customerName;
     private List<OrderItemVm> orderItems;
 
-    public long getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(long orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
@@ -57,12 +60,36 @@ public class OrderVm {
         return orderItems;
     }
 
+    public String getCustomerPhoneNumber() {
+        return customerPhoneNumber;
+    }
+
+    public void setCustomerPhoneNumber(String customerPhoneNumber) {
+        this.customerPhoneNumber = customerPhoneNumber;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
     public void setOrderItems(List<OrderItemVm> orderItems) {
         this.orderItems = orderItems;
     }
 
     public Order convertToOrder() {
-        Order order =new Order(this.orderId,this.userId,this.orderDate,this.totalOrder.getAmount(),this.status,new ArrayList<>());
+        Order order =new Order(UUID.fromString(this.orderId),this.userId,this.orderDate,this.totalOrder.getAmount(),this.status,new ArrayList<>(),this.customerPhoneNumber,this.customerEmail,this.customerName);
         for(OrderItemVm ovm : this.orderItems){
             order.getOrderItems().add(ovm.convertToOrderItem());
         }

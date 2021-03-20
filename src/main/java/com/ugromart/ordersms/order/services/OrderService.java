@@ -1,17 +1,16 @@
 package com.ugromart.ordersms.order.services;
 
 import com.ugromart.ordersms.order.models.Order;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 
 
 public interface OrderService {
     Order save(Order order);
-    Order findOrderById(long id);
+    Order findOrderById(UUID id);
     List<Order> findOrdersByUserId(long id);
     List<Order> findAll();
-    void updateOrderStatus(long id, String status);
+    void updateOrderStatus(UUID id, String status);
+    void updateOrderStatusAndPaymentId(UUID id , String status, UUID paymentReferenceId);
 }
