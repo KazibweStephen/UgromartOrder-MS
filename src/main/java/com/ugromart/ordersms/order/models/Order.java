@@ -38,8 +38,8 @@ public class Order implements Serializable {
         this.status = status;
         this.orderItems = orderItems;
         this.customerPhoneNumber=customerPhoneNumber;
-        this.customerEmail=customerPhoneNumber;
-        this.customerName=customerPhoneNumber;
+        this.customerEmail=customerEmail;
+        this.customerName=customerName;
     }
 
     public Order(UUID orderId, long userId, String orderDate, BigDecimal totalOrder, String status, String customerPhoneNumber, String customerEmail, String customerName, UUID paymentReferenceId, List<OrderItem> orderItems) {

@@ -18,6 +18,8 @@ public interface OrderRespository extends JpaRepository<Order, UUID> {
     @Modifying
     @Query(value = "UPDATE Order o SET o.status = ?2 where o.id = ?1")
     void  updateOrderStatus(UUID id , String status);
+    @Transactional
+    @Modifying
     @Query(value = "UPDATE Order o SET o.status = ?2 , o.paymentReferenceId = ?3 where o.id = ?1")
     void  updateOrderStatusAndPaymentId(UUID id , String status, UUID paymentReferenceId);
 }

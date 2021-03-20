@@ -10,24 +10,8 @@ public class PaymentRequestMessage {
     private  String customerEmail;
 
 
+
     public PaymentRequestMessage() {
-    }
-
-    public PaymentRequestMessage(String orderId, long customerId, Money totalOrder, String customerPhoneNumber, String status) {
-        this.customerId = customerId;
-        this.totalOrder = totalOrder;
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.orderId = orderId;
-        this.status=status;
-    }
-
-    public PaymentRequestMessage(long customerId, Money totalOrder, String customerPhoneNumber, String orderId, String status, String paymentReferenceId) {
-        this.customerId = customerId;
-        this.totalOrder = totalOrder;
-        this.customerPhoneNumber = customerPhoneNumber;
-        this.orderId = orderId;
-        this.status = status;
-        this.paymentReferenceId = paymentReferenceId;
     }
 
     public PaymentRequestMessage(long customerId, Money totalOrder, String customerPhoneNumber, String orderId, String status, String paymentReferenceId, String customerEmail) {
